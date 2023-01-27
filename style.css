@@ -1,0 +1,22 @@
+body {
+    background-color: lightblue;
+}
+
+#title-game {
+    text-align: center;
+    font-size: 70px;
+}
+
+#container-game {
+    display: flex;
+    justify-content: center;
+}
+
+#start-screen {
+    display: block;
+}
+
+#my-canvas {
+    background-color: lightgrey;
+    display: none;
+}
