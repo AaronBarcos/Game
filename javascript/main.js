@@ -24,7 +24,13 @@ const startGame = () => {
 
 }
 
-
+movePlayer = (event) => {
+  if (event.code === "ArrowLeft") {
+    game.player.playerLeft();
+  } else if (event.code === "ArrowRight") {
+    game.player.playerRight();
+  }
+};
 
 
 
@@ -35,3 +41,4 @@ const startGame = () => {
 // ADD EVENT LISTENERS
 
 startButton.addEventListener("click", startGame);
+window.addEventListener("keydown", movePlayer);

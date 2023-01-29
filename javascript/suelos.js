@@ -1,9 +1,9 @@
 class Suelos {
-    constructor(xPos, yPos, w) {
+    constructor(xPos, yPos, w, h) {
         this.x = xPos;
         this.y = yPos;
         this.w = w;
-        this.h = 15;
+        this.h = h;
 
 
     }
