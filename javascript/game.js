@@ -2,8 +2,10 @@
 
 class Game {
   constructor() {
+    this.isGameOn = true;
     this.frames = 1;
     this.bG = new Image();
+    this.true = new True();
     this.bG.src;
     this.player = new Player();
     this.arrSuelos = [];
@@ -24,15 +26,14 @@ class Game {
     ctx.drawImage(this.bG, 0, 0, canvas.width, canvas.height);
   };
 
-  // FUNCIÓN QUE METE EN EL ARRAY LAS PLATAFORMAS A PARTIR DE LA CLASE: SUELOS
-
-  /* createplat = () => {
-    for(let i = 0; i < this.cantidadSuelos; i++) {
-        this.arrSuelos.push(
-            new Suelos(100 * i, 200 + (30 * i), 110, 15)
-        );
-    }
-    } */
+  gameOver = () => {
+    // 1.Detiene la recursión
+    this.isGameOn = false;
+    // 2.Ocultar el canvas
+    canvas.style.display = "none";
+    // 3.Mostrar la pantalla GameOver
+    gameOverScreen.style.display = "block";
+  };
 
   appearSuelos = () => {
     for (let i = 0; i < this.cantidadSuelos; i++) {
@@ -78,19 +79,19 @@ class Game {
 
   appearDisparos = () => {
     if (this.arrDisparos.length === 0 || this.frames % 150 === 0) {
-      let disparosEnemy0 = new Disparos(35, 195, "disparo0");
+      let disparosEnemy0 = new Disparos(70, 240, "disparo0");
       this.arrDisparos.push(disparosEnemy0);
 
-      let disparosEnemy1 = new Disparos(620, 370, "disparo1");
+      let disparosEnemy1 = new Disparos(510, 415, "disparo1");
       this.arrDisparos.push(disparosEnemy1);
 
-      let disparosEnemy2 = new Disparos(620, 470, "disparo2");
+      let disparosEnemy2 = new Disparos(510, 515, "disparo2");
       this.arrDisparos.push(disparosEnemy2);
 
-      let disparosEnemy3 = new Disparos(35, 620, "disparo3");
+      let disparosEnemy3 = new Disparos(70, 665, "disparo3");
       this.arrDisparos.push(disparosEnemy3);
 
-      let disparosEnemy4 = new Disparos(35, 720, "disparo4");
+      let disparosEnemy4 = new Disparos(70, 765, "disparo4");
       this.arrDisparos.push(disparosEnemy4);
     }
   };
@@ -119,10 +120,19 @@ class Game {
   }
 }; */
 
-  // FUNCIÓN PARA COMPROBAR LA COLISIÓN
-
+  // FUNCIONES PARA COMPROBAR LA COLISIÓN
+  colisionPlayerParedes = () => {
+    if(this.player.x < 0 + this.paredes.w) {
+      this.player.speedMov = 0;
+      this.player.x = this.player.x + 1;
+    } else if (this.player.x + this.player.w > canvas.width - this.paredes.w) {
+      this.player.speedMov = 0;
+      this.player.x = this.player.x - 1;
+    } else {
+      this.player.speedMov = 6;
+    }
+  }
   colisionPlayerSuelos = () => {
-    let i = -1;
     for (let n = 0; n < this.cantidadSuelos; n++) {
       let i = -1;
       if (
@@ -142,21 +152,20 @@ class Game {
   };
 
   colisionPlayerDisparos = () => {
-
     this.arrDisparos.forEach((eachDisparo) => {
-      if(
+      if (
         eachDisparo.x < this.player.x + this.player.w &&
         eachDisparo.x + eachDisparo.w > this.player.x &&
         eachDisparo.y < this.player.y + this.player.h &&
         eachDisparo.h + eachDisparo.y > this.player.y
       ) {
-          console.log("Estás muerto!!!")
-        } else {
-          // No colisiona
-        }
-    }) 
-
-  }
+        this.gameOver();
+        console.log("Estás muerto!!!");
+      } else {
+        // No colisiona
+      }
+    });
+  };
 
   // Función principal
 
@@ -173,6 +182,7 @@ class Game {
     // this.removeDisparosDeLaMemoria();
 
     // this.removeDisparosDeLaMemoria()
+    this.colisionPlayerParedes();
     this.colisionPlayerDisparos();
     this.colisionPlayerSuelos();
     this.player.gravityPlayer();
@@ -181,7 +191,8 @@ class Game {
 
     this.drawFondoCanvas();
     this.player.drawPlayer();
-    this.paredes.drawWall();
+    this.true.drawTrue();
+    
     this.arrSuelos.forEach((eachSuelo) => {
       // <---- PARA DIBUJAR LOS SUELOS
       eachSuelo.drawSuelos();
@@ -192,10 +203,13 @@ class Game {
     this.arrDisparos.forEach((eachDisparo) => {
       eachDisparo.drawDisparos();
     });
+    this.paredes.drawWall();
 
     // Recursión y control
     this.frames++;
 
-    requestAnimationFrame(this.gameLoop);
+    if (this.isGameOn === true) {
+      requestAnimationFrame(this.gameLoop);
+    }
   };
 }

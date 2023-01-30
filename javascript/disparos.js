@@ -4,8 +4,8 @@ class Disparos {
     this.disparos.src = "./images/iguales.png";
     this.x = posX;
     this.y = posY;
-    this.w = 140;
-    this.h = 34;
+    this.w = 100;
+    this.h = 24;
     this.speed = 2;
     this.name = name;
   }

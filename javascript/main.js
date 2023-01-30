@@ -4,6 +4,7 @@ const canvas = document.querySelector("#my-canvas");
 const title = document.querySelector("#title-game");
 const startButton = document.querySelector("#start-button");
 const startScreen = document.querySelector("#start-screen");
+const gameOverScreen = document.querySelector("#game-over-screen");
 
 const ctx = canvas.getContext("2d");
 
