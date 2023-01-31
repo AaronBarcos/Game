@@ -13,8 +13,6 @@ class Game {
     this.arrDisparos = [];
     this.paredes = new Paredes();
     this.cantidadSuelos = 5;
-    this.cantidadEnemigos = 5;
-    this.isJumping = false;
   }
 
   // MÉTODOS (FUNCIONES DEL JUEGO)
@@ -43,48 +41,40 @@ class Game {
     canvas.style.display = "none";
     // 3.Mostrar la pantalla GameOver
     gameCompleteScreen.style.display = "block";
-  }
+  };
 
   appearSuelos = () => {
-    for (let i = 0; i < this.cantidadSuelos; i++) {
-      if (i === 0) {
-        let newSuelo0 = new Suelos(200, 100, 550);
-        this.arrSuelos.push(newSuelo0);
-      } else if (i === 1) {
-        let newSuelo1 = new Suelos(0, 275, 450);
-        this.arrSuelos.push(newSuelo1);
-      } else if (i === 2) {
-        let newSuelo2 = new Suelos(200, 550, 550);
-        this.arrSuelos.push(newSuelo2);
-      } else if (i === 3) {
-        let newSuelo3 = new Suelos(0, 800, 550);
-        this.arrSuelos.push(newSuelo3);
-      } else if (i === 4) {
-        let sueloFinal = new Suelos(0, canvas.height - 15, canvas.width);
-        this.arrSuelos.push(sueloFinal);
-      }
-    }
+    let newSuelo0 = new Suelos(200, 100, 550);
+    this.arrSuelos.push(newSuelo0);
+
+    let newSuelo1 = new Suelos(0, 275, 450);
+    this.arrSuelos.push(newSuelo1);
+
+    let newSuelo2 = new Suelos(200, 550, 550);
+    this.arrSuelos.push(newSuelo2);
+
+    let newSuelo3 = new Suelos(0, 800, 550);
+    this.arrSuelos.push(newSuelo3);
+
+    let sueloFinal = new Suelos(0, canvas.height - 15, canvas.width);
+    this.arrSuelos.push(sueloFinal);
   };
 
   appearEnemigos = () => {
-    for (let i = 0; i < this.cantidadEnemigos; i++) {
-      if (i === 0) {
-        let newEnemy0 = new Enemy(35, 195);
-        this.arrEnemigos.push(newEnemy0);
-      } else if (i === 1) {
-        let newEnemy1 = new Enemy(620, 370);
-        this.arrEnemigos.push(newEnemy1);
-      } else if (i === 2) {
-        let newEnemy2 = new Enemy(620, 470);
-        this.arrEnemigos.push(newEnemy2);
-      } else if (i === 3) {
-        let newEnemy3 = new Enemy(35, 620);
-        this.arrEnemigos.push(newEnemy3);
-      } else if (i === 4) {
-        let newEnemy4 = new Enemy(35, 720);
-        this.arrEnemigos.push(newEnemy4);
-      }
-    }
+    let newEnemy0 = new Enemy(35, 195);
+    this.arrEnemigos.push(newEnemy0);
+
+    let newEnemy1 = new Enemy(620, 370);
+    this.arrEnemigos.push(newEnemy1);
+
+    let newEnemy2 = new Enemy(620, 470);
+    this.arrEnemigos.push(newEnemy2);
+
+    let newEnemy3 = new Enemy(35, 620);
+    this.arrEnemigos.push(newEnemy3);
+
+    let newEnemy4 = new Enemy(35, 720);
+    this.arrEnemigos.push(newEnemy4);
   };
 
   appearDisparos = () => {
@@ -122,33 +112,23 @@ class Game {
     });
   };
 
-  /* jumpPlayerLimit = () => {
-    
-    if (this.frames === 2000) {
-      this.jumpLimit = false;
+  removeDisparosDeLaMemoria = () => {
+    if (this.arrDisparos[0].x > canvas.width) {
+      this.arrDisparos.shift();
+    } else if (this.arrDisparos[1].x < 0) {
+      this.arrDisparos.shift();
+    } else if (this.arrDisparos[2].x < 0) {
+      this.arrDisparos.shift();
+    } else if (this.arrDisparos[3].x > canvas.width) {
+      this.arrDisparos.shift();
+    } else if (this.arrDisparos[4].x > canvas.width) {
+      this.arrDisparos.shift();
     }
-
-  }
-
-  jumpPlayer = () => {
-    if (this.jumpPlayerLimit = true) {
-      this.player.jumpPlayer;
-    }
-  } */
-
-  
-
-  /* removeDisparosDeLaMemoria = () => {
-  if (this.arrDisparos[0].x > canvas.width) {
-    this.arrDisparos.shift();
-  } else if (this.arrDisparos[0].x < canvas.width) {
-    this.arrDisparos.shift();
-  }
-}; */
+  };
 
   // FUNCIONES PARA COMPROBAR LA COLISIÓN
   colisionPlayerParedes = () => {
-    if(this.player.x < 0 + this.paredes.w) {
+    if (this.player.x < 0 + this.paredes.w) {
       this.player.speedMov = 0;
       this.player.x = this.player.x + 1;
     } else if (this.player.x + this.player.w > canvas.width - this.paredes.w) {
@@ -157,7 +137,7 @@ class Game {
     } else {
       this.player.speedMov = 6;
     }
-  }
+  };
   colisionPlayerSuelos = () => {
     for (let n = 0; n < this.cantidadSuelos; n++) {
       let i = -1;
@@ -171,7 +151,6 @@ class Game {
         i = n;
         this.player.speedGr = 0;
         this.player.count = 0;
-        this.isJumping = false;
         this.player.y = this.arrSuelos[i].y - this.player.h; // salimos del bucle, porque con detectar una colisión ya vale
       } else {
         this.player.speedGr = 2;
@@ -195,13 +174,15 @@ class Game {
   };
 
   colisionPlayerTrue = () => {
-    if(this.true.x < this.player.x + this.player.w &&
+    if (
+      this.true.x < this.player.x + this.player.w &&
       this.true.x + this.true.w > this.player.x &&
       this.true.y < this.player.y + this.player.h &&
-      this.true.h + this.true.y > this.player.y) {
-        this.gameComplete();
-      }
-  }
+      this.true.h + this.true.y > this.player.y
+    ) {
+      this.gameComplete();
+    }
+  };
 
   // Función principal
 
@@ -215,7 +196,7 @@ class Game {
     this.appearEnemigos();
     this.appearDisparos();
     this.moveDisparos();
-    // this.removeDisparosDeLaMemoria();
+    this.removeDisparosDeLaMemoria();
 
     this.colisionPlayerParedes();
     this.colisionPlayerDisparos();
@@ -223,21 +204,12 @@ class Game {
     this.player.gravityPlayer();
     this.colisionPlayerTrue();
 
-    if (this.isJumping === true) {
-      this.player.jumpPlayer();
-    } 
-    
-    if (this.frames > 50) {
-      this.isJumping = false;
-    }
-    
-
     // 3. Dibujado de elementos
 
     this.drawFondoCanvas();
     this.player.drawPlayer();
-    
-    
+    this.true.drawTrue();
+
     this.arrSuelos.forEach((eachSuelo) => {
       // <---- PARA DIBUJAR LOS SUELOS
       eachSuelo.drawSuelos();

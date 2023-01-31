@@ -16,6 +16,14 @@ body {
     display: block;
 }
 
+#start {
+    margin-top: 150px;
+}
+
+#start-button {
+    text-align: center;
+}
+
 #my-canvas {
     background-color: lightgrey;
     display: none;
@@ -46,12 +54,5 @@ body {
     background: none;
     border-color: white;
     border-radius: 10px;
-}
-
-#try-again img {
-    padding: 10px;
-}
-
-#play-again img {
-    padding: 10px;
+    padding: 20px;
 }

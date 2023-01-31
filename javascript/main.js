@@ -1,7 +1,6 @@
 // VARIABLES GLOBALES
 
 const canvas = document.querySelector("#my-canvas");
-const title = document.querySelector("#title-game");
 const startButton = document.querySelector("#start-button");
 const startScreen = document.querySelector("#start-screen");
 const gameOverScreen = document.querySelector("#game-over-screen");
@@ -13,12 +12,12 @@ const ctx = canvas.getContext("2d");
 
 let game;
 
+
 // STATE MANAGEMENT FUNCTIONS
 
 const startGame = () => {
   startScreen.style.display = "none";
   canvas.style.display = "block";
-  title.style.display = "none";
 
   game = new Game();
 
@@ -35,15 +34,28 @@ const playAgain = () => {
   gameCompleteScreen.style.display = "none";
 }
 
+const jumpInterval = () => {
+  let controlJump = 0;
+    a = setInterval(() => {
+      game.player.jumpPlayer();
+      controlJump++;
+      if(controlJump > 15) {
+        clearInterval(a);
+      }
+    }, 25);
+}
+
+
 movePlayer = (event) => {
   if (event.code === "ArrowLeft") {
     game.player.playerLeft();
   } else if (event.code === "ArrowRight") {
     game.player.playerRight();
   } else if (event.code === "Space" && game.player.count === 0) {
-    game.isJumping = true;      
+    jumpInterval();
   }
 };
+
 
 
 // ADD EVENT LISTENERS
