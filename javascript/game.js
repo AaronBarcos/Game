@@ -14,6 +14,7 @@ class Game {
     this.paredes = new Paredes();
     this.cantidadSuelos = 5;
     this.cantidadEnemigos = 5;
+    this.isJumping = false;
   }
 
   // MÉTODOS (FUNCIONES DEL JUEGO)
@@ -34,6 +35,15 @@ class Game {
     // 3.Mostrar la pantalla GameOver
     gameOverScreen.style.display = "block";
   };
+
+  gameComplete = () => {
+    // 1.Detiene la recursión
+    this.isGameOn = false;
+    // 2.Ocultar el canvas
+    canvas.style.display = "none";
+    // 3.Mostrar la pantalla GameOver
+    gameCompleteScreen.style.display = "block";
+  }
 
   appearSuelos = () => {
     for (let i = 0; i < this.cantidadSuelos; i++) {
@@ -112,6 +122,22 @@ class Game {
     });
   };
 
+  /* jumpPlayerLimit = () => {
+    
+    if (this.frames === 2000) {
+      this.jumpLimit = false;
+    }
+
+  }
+
+  jumpPlayer = () => {
+    if (this.jumpPlayerLimit = true) {
+      this.player.jumpPlayer;
+    }
+  } */
+
+  
+
   /* removeDisparosDeLaMemoria = () => {
   if (this.arrDisparos[0].x > canvas.width) {
     this.arrDisparos.shift();
@@ -144,6 +170,8 @@ class Game {
       ) {
         i = n;
         this.player.speedGr = 0;
+        this.player.count = 0;
+        this.isJumping = false;
         this.player.y = this.arrSuelos[i].y - this.player.h; // salimos del bucle, porque con detectar una colisión ya vale
       } else {
         this.player.speedGr = 2;
@@ -160,12 +188,20 @@ class Game {
         eachDisparo.h + eachDisparo.y > this.player.y
       ) {
         this.gameOver();
-        console.log("Estás muerto!!!");
       } else {
         // No colisiona
       }
     });
   };
+
+  colisionPlayerTrue = () => {
+    if(this.true.x < this.player.x + this.player.w &&
+      this.true.x + this.true.w > this.player.x &&
+      this.true.y < this.player.y + this.player.h &&
+      this.true.h + this.true.y > this.player.y) {
+        this.gameComplete();
+      }
+  }
 
   // Función principal
 
@@ -181,17 +217,26 @@ class Game {
     this.moveDisparos();
     // this.removeDisparosDeLaMemoria();
 
-    // this.removeDisparosDeLaMemoria()
     this.colisionPlayerParedes();
     this.colisionPlayerDisparos();
     this.colisionPlayerSuelos();
     this.player.gravityPlayer();
+    this.colisionPlayerTrue();
+
+    if (this.isJumping === true) {
+      this.player.jumpPlayer();
+    } 
+    
+    if (this.frames > 50) {
+      this.isJumping = false;
+    }
+    
 
     // 3. Dibujado de elementos
 
     this.drawFondoCanvas();
     this.player.drawPlayer();
-    this.true.drawTrue();
+    
     
     this.arrSuelos.forEach((eachSuelo) => {
       // <---- PARA DIBUJAR LOS SUELOS
@@ -213,3 +258,5 @@ class Game {
     }
   };
 }
+
+// ADD EVENT LISTENERS

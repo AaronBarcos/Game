@@ -26,7 +26,32 @@ body {
     display: none;
 }
 
-#game-over-screen img {
+#game-over-img {
     margin-top: 150px;
     width: 700px;
+}
+
+#game-complete-screen {
+    text-align: center;
+    display: none;
+}
+
+#game-complete-img {
+    margin-top: 150px;
+    width: 700px;
+}
+
+.buttons {
+    margin-top: 100px;
+    background: none;
+    border-color: white;
+    border-radius: 10px;
+}
+
+#try-again img {
+    padding: 10px;
+}
+
+#play-again img {
+    padding: 10px;
 }

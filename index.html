@@ -15,9 +15,22 @@
       </div>
 
       <canvas id="my-canvas" width="700" height="950"></canvas>
-    <div id="game-over-screen">
-      <img src="./images/game-over.png" alt="game-over-image" />
-    </div>
+      <div id="game-over-screen">
+        <img id="game-over-img" src="./images/game-over.png" alt="game-over-image" />
+        <div>
+          <button type="button" id="try-again" class="buttons">
+            <img src="./images/try-again.png" width="400px" alt="try-again-button" />
+          </button>
+        </div>
+      </div>
+      <div id="game-complete-screen">
+        <img id="game-complete-img" src="./images/game-complete.png" alt="game-complete-image" />
+        <div>
+          <button type="button" id="play-again" class="buttons">
+            <img src="./images/play-again.png" width="400px" alt="play-again-button" />
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="./javascript/main.js"></script>
@@ -28,6 +41,5 @@
     <script src="./javascript/paredes.js"></script>
     <script src="./javascript/disparos.js"></script>
     <script src="./javascript/true.js"></script>
-    
   </body>
 </html>

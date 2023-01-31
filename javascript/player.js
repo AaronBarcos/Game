@@ -6,6 +6,8 @@ class Player {
     this.y = 15;
     this.speedGr = 2;
     this.speedMov = 6;
+    this.speedJump = 10;
+    this.count = 0;
     this.w = 50;
     this.h = 76;
   }
@@ -26,4 +28,9 @@ class Player {
   playerRight = () => {
     this.x += this.speedMov;
   };
+
+  jumpPlayer = () => {
+    this.y -= this.speedJump;
+    this.count++; 
+  }
 }
