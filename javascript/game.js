@@ -11,8 +11,12 @@ class Game {
     this.arrSuelos = [];
     this.arrEnemigos = [];
     this.arrDisparos = [];
+    this.arrPlus = [];
     this.paredes = new Paredes();
     this.cantidadSuelos = 5;
+    this.plus0 = true;
+    this.plus1 = true;
+    this.plus2 = true;
   }
 
   // MÉTODOS (FUNCIONES DEL JUEGO)
@@ -53,7 +57,7 @@ class Game {
     let newSuelo2 = new Suelos(200, 550, 550);
     this.arrSuelos.push(newSuelo2);
 
-    let newSuelo3 = new Suelos(0, 800, 550);
+    let newSuelo3 = new Suelos(0, 750, 550);
     this.arrSuelos.push(newSuelo3);
 
     let sueloFinal = new Suelos(0, canvas.height - 15, canvas.width);
@@ -70,11 +74,14 @@ class Game {
     let newEnemy2 = new Enemy(620, 470);
     this.arrEnemigos.push(newEnemy2);
 
-    let newEnemy3 = new Enemy(35, 620);
+    let newEnemy3 = new Enemy(35, 570);
     this.arrEnemigos.push(newEnemy3);
 
-    let newEnemy4 = new Enemy(35, 720);
+    let newEnemy4 = new Enemy(35, 670);
     this.arrEnemigos.push(newEnemy4);
+
+    let newEnemy5 = new Enemy(35, 850);
+    this.arrEnemigos.push(newEnemy5);
   };
 
   appearDisparos = () => {
@@ -82,19 +89,33 @@ class Game {
       let disparosEnemy0 = new Disparos(70, 240, "disparo0");
       this.arrDisparos.push(disparosEnemy0);
 
-      let disparosEnemy1 = new Disparos(510, 415, "disparo1");
-      this.arrDisparos.push(disparosEnemy1);
-
       let disparosEnemy2 = new Disparos(510, 515, "disparo2");
       this.arrDisparos.push(disparosEnemy2);
 
-      let disparosEnemy3 = new Disparos(70, 665, "disparo3");
-      this.arrDisparos.push(disparosEnemy3);
-
-      let disparosEnemy4 = new Disparos(70, 765, "disparo4");
+      let disparosEnemy4 = new Disparos(70, 715, "disparo4");
       this.arrDisparos.push(disparosEnemy4);
+
+      
+    } else if (this.frames % 200 === 0) {
+      let disparosEnemy1 = new Disparos(510, 415, "disparo1");
+      this.arrDisparos.push(disparosEnemy1);
+    } else if (this.frames % 100 === 0) {
+      let disparosEnemy3 = new Disparos(70, 615, "disparo3");
+      this.arrDisparos.push(disparosEnemy3);
+    } else if (this.frames % 75 === 0) {
+      let disparosEnemy5 = new Disparos(70, 900, "disparo5");
+      this.arrDisparos.push(disparosEnemy5);
     }
   };
+
+  appearPlus = () => {
+    let plus0 = new Plus(350, 125);
+    this.arrPlus.push(plus0);
+    let plus1 = new Plus (250, 335);
+    this.arrPlus.push(plus1);
+    let plus2 = new Plus(615, 575);
+    this.arrPlus.push(plus2);
+  }
 
   moveDisparos = () => {
     this.arrDisparos.forEach((eachDisparo) => {
@@ -108,40 +129,8 @@ class Game {
         eachDisparo.moveDisparosDerecha();
       } else if (eachDisparo.name === "disparo4") {
         eachDisparo.moveDisparosDerecha();
-      }
-    });
-  };
-
-  // Funciones para remover elementos de la memoria
-
-
-  /*removeSuelos = () => {
-    this.arrSuelos.shift()
-  }
-
-  removeEnemigos = () => {
-    this.arrEnemigos.splice(0, 4);
-  } */
-
-
-  removeDisparos = () => {
-    this.arrDisparos.forEach((eachDisparo) => {
-      if (eachDisparo.name === "disparo0" && eachDisparo.x > canvas.width) {
-        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
-      } else if (eachDisparo.name === "disparo1" && eachDisparo.x < 0) {
-        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
-      } else if (eachDisparo.name === "disparo2" && eachDisparo.x < 0) {
-        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
-      } else if (
-        eachDisparo.name === "disparo3" &&
-        eachDisparo.x > canvas.width
-      ) {
-        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
-      } else if (
-        eachDisparo.name === "disparo4" &&
-        eachDisparo.x > canvas.width
-      ) {
-        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo5") {
+        eachDisparo.moveDisparosDerecha();
       }
     });
   };
@@ -204,6 +193,67 @@ class Game {
     }
   };
 
+  colisionPlayerPlus = () => {
+    if (
+      this.arrPlus[0].x < this.player.x + this.player.w &&
+      this.arrPlus[0].x + this.arrPlus[0].w > this.player.x &&
+      this.arrPlus[0].y < this.player.y + this.player.h &&
+      this.arrPlus[0].h + this.arrPlus[0].y > this.player.y
+    ) {
+      this.plus0 = false;
+    } else if (
+      this.arrPlus[1].x < this.player.x + this.player.w &&
+      this.arrPlus[1].x + this.arrPlus[1].w > this.player.x &&
+      this.arrPlus[1].y < this.player.y + this.player.h &&
+      this.arrPlus[1].h + this.arrPlus[1].y > this.player.y
+    ) {
+      this.plus1 = false;
+    } else if (
+      this.arrPlus[2].x < this.player.x + this.player.w &&
+      this.arrPlus[2].x + this.arrPlus[2].w > this.player.x &&
+      this.arrPlus[2].y < this.player.y + this.player.h &&
+      this.arrPlus[2].h + this.arrPlus[2].y > this.player.y
+    ) {
+      this.plus2 = false;
+    }
+  }
+
+  // Funcion para remover disparos de la memoria
+
+  removeDisparos = () => {
+    this.arrDisparos.forEach((eachDisparo) => {
+      if (eachDisparo.name === "disparo0" && eachDisparo.x > canvas.width) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo1" && eachDisparo.x < 0) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo2" && eachDisparo.x < 0) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (
+        eachDisparo.name === "disparo3" &&
+        eachDisparo.x > canvas.width
+      ) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (
+        eachDisparo.name === "disparo4" &&
+        eachDisparo.x > canvas.width
+      ) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo5" && eachDisparo.x > canvas.width) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1)
+      }
+    });
+  };
+
+  drawPlus = () => {
+    if (this.plus0 === true) {
+      this.arrPlus[0].drawPlus();
+    } else if (this.plus1 === true) {
+      this.arrPlus[1].drawPlus();
+    } else if (this.plus2 === true) {
+      this.arrPlus[2].drawPlus();
+    }
+  }
+
   // Función principal
 
   gameLoop = () => {
@@ -212,8 +262,6 @@ class Game {
 
     // 2.Movimientos y acciones de todos los elementos
 
-    this.appearSuelos();
-    this.appearEnemigos();
     this.appearDisparos();
     this.moveDisparos();
 
@@ -224,6 +272,7 @@ class Game {
     this.colisionPlayerSuelos();
     this.player.gravityPlayer();
     this.colisionPlayerTrue();
+    this.colisionPlayerPlus();
 
     // 3. Dibujado de elementos
 
@@ -240,6 +289,7 @@ class Game {
     this.arrDisparos.forEach((eachDisparo) => {
       eachDisparo.drawDisparos();
     });
+    this.drawPlus();
     this.paredes.drawWall();
 
     // Recursión y control

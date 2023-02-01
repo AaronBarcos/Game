@@ -5,7 +5,7 @@ class Player {
     this.x = 600;
     this.y = 15;
     this.speedGr = 6;
-    this.speedMov = 8;
+    this.speedMov = 12;
     this.speedJump = 10;
     this.count = 0;
     this.w = 50;

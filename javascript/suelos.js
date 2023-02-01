@@ -11,7 +11,8 @@ class Suelos {
   drawSuelos = () => {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.w, this.h);
-    ctx.fillStyle = "green";
+    ctx.fillStyle = "#c1272d";
+    ctx.strokeStyle = 'black';
     ctx.stroke();
     ctx.fill();
   };

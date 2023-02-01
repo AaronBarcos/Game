@@ -20,6 +20,10 @@ const startGame = () => {
 
   game = new Game();
 
+  game.appearSuelos();
+  game.appearEnemigos();
+  game.appearPlus();
+
   game.gameLoop();
 };
 
@@ -38,7 +42,7 @@ const jumpInterval = () => {
   a = setInterval(() => {
     game.player.jumpPlayer();
     controlJump++;
-    if (controlJump > 15) {
+    if (controlJump > 20) {
       clearInterval(a);
     }
   }, 25);
