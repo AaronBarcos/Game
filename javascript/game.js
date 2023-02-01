@@ -112,18 +112,38 @@ class Game {
     });
   };
 
-  removeDisparosDeLaMemoria = () => {
-    if (this.arrDisparos[0].x > canvas.width) {
-      this.arrDisparos.shift();
-    } else if (this.arrDisparos[1].x < 0) {
-      this.arrDisparos.shift();
-    } else if (this.arrDisparos[2].x < 0) {
-      this.arrDisparos.shift();
-    } else if (this.arrDisparos[3].x > canvas.width) {
-      this.arrDisparos.shift();
-    } else if (this.arrDisparos[4].x > canvas.width) {
-      this.arrDisparos.shift();
-    }
+  // Funciones para remover elementos de la memoria
+
+
+  /*removeSuelos = () => {
+    this.arrSuelos.shift()
+  }
+
+  removeEnemigos = () => {
+    this.arrEnemigos.splice(0, 4);
+  } */
+
+
+  removeDisparos = () => {
+    this.arrDisparos.forEach((eachDisparo) => {
+      if (eachDisparo.name === "disparo0" && eachDisparo.x > canvas.width) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo1" && eachDisparo.x < 0) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (eachDisparo.name === "disparo2" && eachDisparo.x < 0) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (
+        eachDisparo.name === "disparo3" &&
+        eachDisparo.x > canvas.width
+      ) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      } else if (
+        eachDisparo.name === "disparo4" &&
+        eachDisparo.x > canvas.width
+      ) {
+        this.arrDisparos.splice(this.arrDisparos.indexOf(eachDisparo), 1);
+      }
+    });
   };
 
   // FUNCIONES PARA COMPROBAR LA COLISIÓN
@@ -196,7 +216,8 @@ class Game {
     this.appearEnemigos();
     this.appearDisparos();
     this.moveDisparos();
-    this.removeDisparosDeLaMemoria();
+
+    this.removeDisparos();
 
     this.colisionPlayerParedes();
     this.colisionPlayerDisparos();
@@ -211,7 +232,6 @@ class Game {
     this.true.drawTrue();
 
     this.arrSuelos.forEach((eachSuelo) => {
-      // <---- PARA DIBUJAR LOS SUELOS
       eachSuelo.drawSuelos();
     });
     this.arrEnemigos.forEach((eachEnemy) => {
@@ -230,5 +250,3 @@ class Game {
     }
   };
 }
-
-// ADD EVENT LISTENERS

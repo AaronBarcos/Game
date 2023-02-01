@@ -13,22 +13,14 @@ class Disparos {
   // MÉTODOS
 
   drawDisparos = () => {
-    ctx.drawImage(
-      this.disparos,
-      this.x,
-      this.y,
-      this.w,
-      this.h
-    );
+    ctx.drawImage(this.disparos, this.x, this.y, this.w, this.h);
   };
 
   moveDisparosDerecha = () => {
     this.x += this.speed;
-  }
+  };
 
   moveDisparosLeft = () => {
     this.x -= this.speed;
-  }
-
-
+  };
 }

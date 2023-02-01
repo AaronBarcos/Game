@@ -12,7 +12,6 @@ const ctx = canvas.getContext("2d");
 
 let game;
 
-
 // STATE MANAGEMENT FUNCTIONS
 
 const startGame = () => {
@@ -27,24 +26,23 @@ const startGame = () => {
 const tryAgain = () => {
   startGame();
   gameOverScreen.style.display = "none";
-}
+};
 
 const playAgain = () => {
   startGame();
   gameCompleteScreen.style.display = "none";
-}
+};
 
 const jumpInterval = () => {
   let controlJump = 0;
-    a = setInterval(() => {
-      game.player.jumpPlayer();
-      controlJump++;
-      if(controlJump > 15) {
-        clearInterval(a);
-      }
-    }, 25);
-}
-
+  a = setInterval(() => {
+    game.player.jumpPlayer();
+    controlJump++;
+    if (controlJump > 15) {
+      clearInterval(a);
+    }
+  }, 25);
+};
 
 movePlayer = (event) => {
   if (event.code === "ArrowLeft") {
@@ -55,8 +53,6 @@ movePlayer = (event) => {
     jumpInterval();
   }
 };
-
-
 
 // ADD EVENT LISTENERS
 

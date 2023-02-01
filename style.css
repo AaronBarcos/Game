@@ -1,58 +1,58 @@
 body {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 #title-game {
-    text-align: center;
-    font-size: 70px;
+  text-align: center;
+  font-size: 70px;
 }
 
 #container-game {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #start-screen {
-    display: block;
+  display: block;
 }
 
 #start {
-    margin-top: 150px;
+  margin-top: 150px;
 }
 
 #start-button {
-    text-align: center;
+  text-align: center;
 }
 
 #my-canvas {
-    background-color: lightgrey;
-    display: none;
+  background-color: lightgrey;
+  display: none;
 }
 
 #game-over-screen {
-    text-align: center;
-    display: none;
+  text-align: center;
+  display: none;
 }
 
 #game-over-img {
-    margin-top: 150px;
-    width: 700px;
+  margin-top: 150px;
+  width: 700px;
 }
 
 #game-complete-screen {
-    text-align: center;
-    display: none;
+  text-align: center;
+  display: none;
 }
 
 #game-complete-img {
-    margin-top: 150px;
-    width: 700px;
+  margin-top: 150px;
+  width: 700px;
 }
 
 .buttons {
-    margin-top: 100px;
-    background: none;
-    border-color: white;
-    border-radius: 10px;
-    padding: 20px;
+  margin-top: 100px;
+  background: none;
+  border-color: white;
+  border-radius: 10px;
+  padding: 20px;
 }

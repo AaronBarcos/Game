@@ -13,7 +13,7 @@ class Paredes {
     ctx.fill();
 
     ctx.beginPath();
-    ctx.rect((canvas.width - 25), 0, this.w, this.h);
+    ctx.rect(canvas.width - 25, 0, this.w, this.h);
     ctx.fillStyle = "blue";
     ctx.fill();
   };

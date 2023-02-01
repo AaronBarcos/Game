@@ -4,8 +4,8 @@ class Player {
     this.player.src = "./images/numero0.png";
     this.x = 600;
     this.y = 15;
-    this.speedGr = 2;
-    this.speedMov = 6;
+    this.speedGr = 6;
+    this.speedMov = 8;
     this.speedJump = 10;
     this.count = 0;
     this.w = 50;
@@ -31,6 +31,7 @@ class Player {
 
   jumpPlayer = () => {
     this.y -= this.speedJump;
-    this.count++; 
-  }
+    this.count++;
+  };
+
 }
