@@ -45,12 +45,11 @@ body {
 }
 
 #game-complete-img {
-  margin-top: 100px;
   width: 700px;
 }
 
 .buttons {
-  margin-top: 50px;
+  margin-top: 0;
   background: none;
   border-color: white;
   border-radius: 10px;

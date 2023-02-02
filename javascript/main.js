@@ -9,19 +9,19 @@ const buttonTryAgain = document.querySelector("#try-again");
 const buttonPlayAgain = document.querySelector("#play-again");
 const scoreDiv = document.querySelector("#score");
 const score = document.querySelectorAll(".score-text");
+const tryTrap = document.querySelector("#try-trap");
 const perfect = document.querySelector("#pefect-h1");
 
 const ctx = canvas.getContext("2d");
 
 let game;
-console.log(score)
 
 // STATE MANAGEMENT FUNCTIONS
 
 const startGame = () => {
   startScreen.style.display = "none";
   canvas.style.display = "block";
-  scoreDiv.style.display = "block"
+  scoreDiv.style.display = "block";
 
   game = new Game();
 
@@ -35,11 +35,17 @@ const startGame = () => {
 const tryAgain = () => {
   startGame();
   gameOverScreen.style.display = "none";
+  score.forEach((eachScore) => {
+    eachScore.innerText = 0;
+  });
 };
 
 const playAgain = () => {
   startGame();
   gameCompleteScreen.style.display = "none";
+  score.forEach((eachScore) => {
+    eachScore.innerText = 0;
+  });
 };
 
 const jumpInterval = () => {

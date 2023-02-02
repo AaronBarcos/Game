@@ -33,5 +33,4 @@ class Player {
     this.y -= this.speedJump;
     this.count++;
   };
-
 }
