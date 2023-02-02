@@ -17,7 +17,11 @@
           </button>
         </div>
       </div>
-
+      <div id="score">
+        <img src="./images/plus-score.png" alt="score-img" width="200" />
+        <h1 class="score-text">0</h1>
+        <h1 id="pefect-h1">Perfect!</h1>
+      </div>
       <canvas id="my-canvas" width="700" height="950"></canvas>
       <div id="game-over-screen">
         <img
@@ -26,6 +30,8 @@
           alt="game-over-image"
         />
         <div>
+          <h1 class="your-score">Your score:</h1>
+          <h1 class="score-text">0</h1>
           <button type="button" id="try-again" class="buttons">
             <img
               src="./images/try-again.png"
@@ -42,6 +48,8 @@
           alt="game-complete-image"
         />
         <div>
+          <h1 class="your-score">Your score:</h1>
+          <h1 class="score-text">0</h1>
           <button type="button" id="play-again" class="buttons">
             <img
               src="./images/play-again.png"
@@ -62,6 +70,5 @@
     <script src="./javascript/disparos.js"></script>
     <script src="./javascript/true.js"></script>
     <script src="./javascript/plus.js"></script>
-    
   </body>
 </html>

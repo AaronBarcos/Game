@@ -7,16 +7,21 @@ const gameOverScreen = document.querySelector("#game-over-screen");
 const gameCompleteScreen = document.querySelector("#game-complete-screen");
 const buttonTryAgain = document.querySelector("#try-again");
 const buttonPlayAgain = document.querySelector("#play-again");
+const scoreDiv = document.querySelector("#score");
+const score = document.querySelectorAll(".score-text");
+const perfect = document.querySelector("#pefect-h1");
 
 const ctx = canvas.getContext("2d");
 
 let game;
+console.log(score)
 
 // STATE MANAGEMENT FUNCTIONS
 
 const startGame = () => {
   startScreen.style.display = "none";
   canvas.style.display = "block";
+  scoreDiv.style.display = "block"
 
   game = new Game();
 
