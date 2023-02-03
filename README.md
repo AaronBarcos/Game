@@ -94,12 +94,6 @@ Remember that you can try to take all the bonuses to discover something addition
 
 ## boss.js - Is there a boss?
 
-# States and Transitions
-
-# States and Transitions
-
-- List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
-
 # ES
 
 # NOMBRE DEL PROYECT0
@@ -205,7 +199,3 @@ El juego de plataformas "Is 1 equal to 0?" trata de solventar de una forma diver
 ## true.js - Objeto para ganar en el juego.
 
 ## boss.js - ¿Hay boss?
-
-# States and Transitions
-
-- List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
