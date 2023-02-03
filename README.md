@@ -20,7 +20,7 @@ Remember that you can try to take all the bonuses to discover something addition
 
 # Backlog Functionalities
 
-- List here the cool (but not essential) functionalities your game could have
+- Add more styles to the game.
 
 # Proyect Structure
 
@@ -120,7 +120,7 @@ El juego de plataformas "Is 1 equal to 0?" trata de solventar de una forma diver
 
 # Backlog Functionalities
 
-- List here the cool (but not essential) functionalities your game could have
+- Agregar más estilos al juego
 
 # Estructura del proyecto
 
