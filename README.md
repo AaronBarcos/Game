@@ -1,4 +1,4 @@
-# EN
+# ENGLISH
 
 # NAME OF YOUR PROYECT
 
@@ -20,7 +20,11 @@ Remember that you can try to take all the bonuses to discover something addition
 
 # Backlog Functionalities
 
-- Add more styles to the game.
+- Aesthetic improvements.
+- Add sounds.
+- Countdown.
+- More levels.
+- Instructions.
 
 # Proyect Structure
 
@@ -94,7 +98,7 @@ Remember that you can try to take all the bonuses to discover something addition
 
 ## boss.js - Is there a boss?
 
-# ES
+# ESPAÑOL
 
 # NOMBRE DEL PROYECT0
 
@@ -110,11 +114,15 @@ El juego de plataformas "Is 1 equal to 0?" trata de solventar de una forma diver
 
 # Funcionalidades principales
 
-- Las funcionalidades principales del juego son los movimientos que tiene el personaje(izquierda, derecha, salto, gravedad). Los enemigos y los disparos. Los pluses y sus secretos. Las colisiones entre personajes, disparos, suelos, paredes... Además de poder volver a jugar una vez superado o volver a intentar la partida.
+- Las funcionalidades principales del juego son los movimientos que tiene el personaje (izquierda, derecha, salto, gravedad). Los enemigos y los disparos. Los pluses y sus secretos. Las colisiones entre personajes, disparos, suelos, paredes... Además de poder volver a jugar una vez superado o volver a intentar la partida.
 
-# Backlog Functionalities
+# Próximas funcionalidades
 
-- Agregar más estilos al juego
+- Mejoras estéticas.
+- Añadir sonidos.
+- Cuenta atrás.
+- Más niveles.
+- Instrucciones.
 
 # Estructura del proyecto
 
